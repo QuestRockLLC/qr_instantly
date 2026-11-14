@@ -1,0 +1,30 @@
+:root{--line:rgba(120,200,180,.16);--gold:#e4c27a;--mint:#7ee0c3;--warn:#ffb86b;--bad:#ff7a90;--ok:#6ee7b7;--muted:#8aa4b4;--text:#e8f3f0;--panel:rgba(12,28,40,.72)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{font-family:Georgia,serif;color:var(--text);background:linear-gradient(180deg,#061018,#0b1c28 55%,#08141c)}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 22px 64px}
+.top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+.kicker{letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:var(--gold);font-family:system-ui,sans-serif}
+h1{font-size:34px;margin:6px 0 0;font-weight:500}
+.sub{color:var(--muted);font-size:14px;margin-top:6px;font-family:system-ui,sans-serif}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+@media(min-width:1100px){.kpis{grid-template-columns:repeat(6,1fr)}}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}
+.kpi span{display:block;font-family:system-ui;font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.1em}
+.kpi b{font-size:26px;margin-top:8px;display:block}
+.kpi em{font-style:normal;color:var(--mint);font-size:12px;font-family:system-ui}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:980px){.grid{grid-template-columns:1.15fr .85fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px}
+h2{font-size:18px;margin:0 0 12px}
+table{width:100%;border-collapse:collapse;font-family:system-ui;font-size:12px}
+th{text-align:left;color:var(--muted);padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.04)}
+.rec{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.rec h3{margin:0 0 6px;font-size:14px}
+.rec p{margin:0;color:var(--muted);font-size:13px;font-family:system-ui;line-height:1.45}
+.loading,.error{padding:80px 22px;text-align:center;font-family:system-ui}
+.error{color:var(--bad)}
+button{margin-top:16px;padding:10px 18px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer}
+.bar{display:inline-block;width:6px;margin:0 1px;background:linear-gradient(180deg,var(--mint),#2a6b5c);border-radius:4px 4px 0 0;vertical-align:bottom;min-height:6px}
+.bar.zero{background:#1d3340}
+.bars{height:80px;align-items:flex-end;display:flex;flex-wrap:wrap;gap:2px}

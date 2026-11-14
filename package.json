@@ -1,0 +1,16 @@
+{
+  "name": "instantly-daily-report",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "dev:next": "next dev --port 3100",
+    "build": "next build",
+    "start": "node server.mjs"
+  },
+  "type": "module",
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
