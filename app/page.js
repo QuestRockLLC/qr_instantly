@@ -165,7 +165,12 @@ export default function Page() {
           <h2>
             Recommendations{" "}
             <span className="sub">
-              · {data.meta.recommendationsSource === "gpt" ? `GPT (${data.meta.recommendationsModel || "gpt-4o-mini"})` : "rules"}
+              ·{" "}
+              {data.meta.recommendationsSource === "gpt"
+                ? `GPT (${data.meta.recommendationsModel || "gpt-4o-mini"})`
+                : data.meta.recommendationsSource === "paused"
+                  ? "resumes Monday"
+                  : "rules"}
             </span>
           </h2>
           {data.recommendations.map((r) => (

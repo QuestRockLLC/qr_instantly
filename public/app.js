@@ -19,6 +19,13 @@ function render(data) {
     )
     .join("");
 
+  const recSource =
+    data.meta.recommendationsSource === "gpt"
+      ? ' <span class="sub">· GPT (' + (data.meta.recommendationsModel || "gpt-4o-mini") + ")</span>"
+      : data.meta.recommendationsSource === "paused"
+        ? ' <span class="sub">· resumes Monday</span>'
+        : ' <span class="sub">· rules</span>';
+
   const recs = data.recommendations
     .map((r) => `<div class="rec ${r.tone}"><h3>${r.title}</h3><p>${r.body}</p></div>`)
     .join("");
@@ -65,7 +72,7 @@ function render(data) {
     </section>
     <div class="grid">
       <div class="card"><h2>Six campaigns</h2><table><thead><tr><th>Campaign</th><th>Leads</th><th>Sent</th><th>Open</th><th>Click</th><th>Reply</th><th>Bounce</th></tr></thead><tbody>${campRows}</tbody></table></div>
-      <div class="card"><h2>Recommendations${data.meta.recommendationsSource === "gpt" ? ' <span class="sub">· GPT (' + (data.meta.recommendationsModel || "gpt-4o-mini") + ")</span>" : ' <span class="sub">· rules</span>'}</h2>${recs}</div>
+      <div class="card"><h2>Recommendations${recSource}</h2>${recs}</div>
     </div>
     <div class="card" style="margin-top:16px"><h2>36 production inboxes</h2><div class="bars">${bars}</div>
     <div style="overflow-x:auto;margin-top:12px"><table><thead><tr><th>Inbox</th><th>Campaign</th><th>Limit</th><th>Today</th><th>7d</th><th>Left</th></tr></thead><tbody>${inboxRows}</tbody></table></div></div>
