@@ -61,6 +61,7 @@ tr:hover td { background: rgba(126,224,195,0.04); }
 
 .rec { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
 .rec.warn { border-color: rgba(255,184,107,0.35); }
+.warn-txt { color: var(--warn); font-weight: 600; }
 .rec.ok { border-color: rgba(110,231,183,0.28); }
 .rec.info { border-color: var(--line); }
 .rec h3 { margin: 0 0 6px; font-size: 14px; }

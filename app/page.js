@@ -98,7 +98,12 @@ export default function Page() {
         <div className="kpi">
           <span>Sent today</span>
           <b>{fmt(t.todaySent)}</b>
-          <em>of {fmt(t.capacityToday)} capacity</em>
+          <em>
+            of {fmt(t.capacityToday)} effective cap
+            {t.capacityTodayInbox != null && t.capacityTodayInbox !== t.capacityToday
+              ? ` · ${fmt(t.capacityTodayInbox)} inbox max`
+              : ""}
+          </em>
         </div>
         <div className="kpi">
           <span>Last 7 days</span>
@@ -134,6 +139,9 @@ export default function Page() {
             <thead>
               <tr>
                 <th>Campaign</th>
+                <th>Status</th>
+                <th>Camp cap</th>
+                <th>Today</th>
                 <th>Leads</th>
                 <th>Sent</th>
                 <th>Open</th>
@@ -146,6 +154,14 @@ export default function Page() {
               {data.campaigns.map((c) => (
                 <tr key={c.id}>
                   <td>{c.name.replace("QuestRock HELOC Pilot | ", "")}</td>
+                  <td className={c.status === -2 || c.status === 2 ? "warn-txt" : ""}>
+                    {c.statusLabel || c.status}
+                  </td>
+                  <td>{fmt(c.dailyLimit)}</td>
+                  <td>
+                    {fmt(c.todaySent ?? 0)}
+                    {c.dailyLimit ? ` / ${fmt(c.dailyLimit)}` : ""}
+                  </td>
                   <td>{fmt(c.leads)}</td>
                   <td>{fmt(c.emailsSent)}</td>
                   <td>{fmt(c.openCount)}</td>
@@ -157,7 +173,8 @@ export default function Page() {
             </tbody>
           </table>
           <p className="legend" style={{ marginTop: 12 }}>
-            Open tracking can read 0 even when mail is delivered (image blocking). Clicks and replies are the operational signals.
+            Camp cap = Instantly campaign daily_limit (shared across that campaign&apos;s inboxes). Effective workspace max is the lower of
+            sum(campaign caps) and sum(inbox limits). Open tracking can read 0 even when mail is delivered (image blocking).
           </p>
         </div>
 
